@@ -1,6 +1,5 @@
 package br.edu.ifpb.infra;
 
-import br.edu.ifpb.domain.Clientes;
 import br.edu.ifpb.domain.Cliente;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -50,14 +50,16 @@ public class ClientesEmJDBC implements Clientes {
         try (Connection connection = this.dataSource.getConnection()) {
             Statement createStatement = connection.createStatement();
             ResultSet result = createStatement.executeQuery(
+//                    "SELECT * FROM Clientes LIMIT 2;"
                     "SELECT * FROM Clientes;"
             );
             iterarComClientes(result, lista);
+//            lista = lista.subList(0, 1);
             createStatement.close();
         } catch (SQLException ex) {
             Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return lista;
+        return lista;//.subList(1, 1);
     }
 
     private void iterarComClientes(ResultSet result, List<Cliente> lista) throws SQLException {
