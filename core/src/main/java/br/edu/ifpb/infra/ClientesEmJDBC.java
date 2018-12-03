@@ -26,6 +26,7 @@ import javax.sql.DataSource;
 public class ClientesEmJDBC implements Clientes {
 
     @Resource(lookup = "java:app/jdbc/sessionbeans")
+//    @Resource(lookup = "java:app/jdbc/sessionbeans-docker")
     private DataSource dataSource;
 
 //    private Connection connection;

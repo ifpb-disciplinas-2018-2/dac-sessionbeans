@@ -18,6 +18,11 @@ public class ControladorClientes {
 
     @EJB
     private Clientes clientes;
+//    private Clientes clientes = new ServiceLocator()
+//            .lookup(
+//                    "java:global/dac-sessionbean-core/ClientesEmJDBC!br.edu.ifpb.domain.Clientes",
+//                    Clientes.class
+//            );
 
     public List<Cliente> todos() {
         return this.clientes.todosOsClientes();

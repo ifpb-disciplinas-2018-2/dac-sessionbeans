@@ -1,0 +1,50 @@
+version: "2"
+services:
+  postgres:
+    container_name: db-produtos
+    image: ricardojob/db-produtos
+    build: ./postgres
+    ports:
+     - "5434:5432"
+#    expose:
+#     - 5434   
+#    volumes:
+#     - postgres-volume-db:/var/lib/postgresql/data/
+  core:
+    container_name: app-core
+    build: ./core
+    image: ricardojob/app-core
+    ports:
+     - "8082:8080"
+     - 4848 
+     - 8009 
+     - 9009 
+     - 8181 
+     - 3700
+    links:
+     - "postgres:host-banco"
+  web:
+    container_name: app-web
+    build: ./web
+    image: ricardojob/app-web
+    ports:
+     - "8083:8080"
+     - "8084:8181"
+     - "8010:8009"
+     - "4849:4848"
+     - "3701:3700"
+    links:
+     - "core:host-core"
+#    expose:
+#     - 8086
+    volumes:
+#     - postgres-volume-db:/var/lib/postgresql/data/
+     - /var/run/docker.sock:/var/run/docker.sock
+     - $PWD:$PWD
+#networks:
+#  default:
+#    external:
+#      name: produtos
+#volumes:
+#    postgres-volume-db:
+#      driver: local

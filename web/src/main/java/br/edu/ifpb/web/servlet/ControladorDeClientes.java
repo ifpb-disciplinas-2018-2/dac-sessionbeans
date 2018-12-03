@@ -2,9 +2,9 @@ package br.edu.ifpb.web.servlet;
 
 import br.edu.ifpb.domain.Cliente;
 import br.edu.ifpb.domain.Clientes;
+import br.edu.ifpb.locator.ServiceLocator;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +23,13 @@ public class ControladorDeClientes extends HttpServlet {
 //    @Inject
 //    @EJB
 //    private ClientesEmJDBC clientes;
-    @EJB
-    private Clientes clientes;
+//    @EJB
+//    private Clientes clientes;
+    private Clientes clientes = new ServiceLocator()
+            .lookup(
+                    "java:global/dac-sessionbean-core/ClientesEmJDBC!br.edu.ifpb.domain.Clientes",
+                    Clientes.class
+            );
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
