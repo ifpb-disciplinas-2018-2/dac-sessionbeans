@@ -1,8 +1,7 @@
-package br.edu.ifpb.web.converter;
+package br.edu.ifpb.web.jsf.converter;
 
 import br.edu.ifpb.domain.Produto;
 import br.edu.ifpb.domain.ProdutoDAOIF;
-import javax.ejb.EJB;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;

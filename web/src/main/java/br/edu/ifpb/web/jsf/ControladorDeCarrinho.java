@@ -22,19 +22,24 @@ public class ControladorDeCarrinho implements Serializable {
 
     @EJB
     private Carrinho carrinho;
+//    private Carrinho carrinho = new ServiceLocator()
+//            .lookup(
+//                    "java:global/dac-sessionbean-core/CarrinhoDeCompras!br.edu.ifpb.carrinho.Carrinho",
+//                    Carrinho.class
+//            );
     private String produto;
 
-    public String finalizar(){
+    public String finalizar() {
         this.carrinho.finalizar();
         finalizarSessao();
         return "index.xhtml?faces-redirect=true";
     }
-    
-    public String remover(String produto){
+
+    public String remover(String produto) {
         this.carrinho.remover(produto);
         return null;
     }
-    
+
     public String add() {
         this.carrinho.adicionar(
                 this.produto
@@ -48,13 +53,13 @@ public class ControladorDeCarrinho implements Serializable {
     }
 
     private void finalizarSessao() {
-    
+
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         HttpSession session = (HttpSession) externalContext.getSession(true);
         session.invalidate();
-        
+
     }
-    
+
     public String getProduto() {
         return produto;
     }
@@ -62,7 +67,5 @@ public class ControladorDeCarrinho implements Serializable {
     public void setProduto(String produto) {
         this.produto = produto;
     }
-
-    
 
 }

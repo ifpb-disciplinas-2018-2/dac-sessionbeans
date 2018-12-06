@@ -17,6 +17,7 @@ import javax.ejb.StatefulTimeout;
  */
 @Stateful
 @StatefulTimeout(unit = TimeUnit.MINUTES, value = 5)
+//@Local(Carrinho.class)
 @Remote(Carrinho.class)
 public class CarrinhoDeCompras implements Carrinho {
 
